@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fdf5e6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+            text-align: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 600px;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #d63384;
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .message {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        /* The Button */
+        button {
+            padding: 15px 30px;
+            font-size: 1rem;
+            background-color: #ff4d6d;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+        }
+
+        /* Photo Grid */
+        .photo-grid {
+            display: none; /* Hidden at first */
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .photo-grid img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Heart Animation */
+        .hearts {
+            position: fixed;
+            top: -10px;
+            color: #ff4d6d;
+            user-select: none;
+            pointer-events: none;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 id="title">Happy Birthday, mine❤️! 🎈</h1>
+        <p class="message" id="text">Today is all about celebrating you and the joy you bring to my life.</p>
+        
+        <button onclick="revealMemories()">ika modhalupedthama ✨</button>
+
+        <div class="photo-grid" id="gallery">
+            <img src="1.jpeg" alt="Memory 1">
+            <img src="2.jpeg" alt="Memory ">
+            <img src="3.jpeg" alt="Memory 3">
+            <img src="4.jpeg" alt="Memory 4">
+        </div>
+    </div>
+
+    <script>
+        // Function to show the photos
+        function revealMemories() {
+            document.getElementById('gallery').style.display = 'grid';
+            document.getElementById('title').innerText = "Our Memories ❤️";
+            createHearts();
+        }
+
+        // Falling Hearts effect
+        function createHearts() {
+            for(let i=0; i<30; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.classList.add('hearts');
+                    heart.innerText = '❤️';
+                    heart.style.left = Math.random() * 100 + 'vw';
+                    heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                    heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                    document.body.appendChild(heart);
+                }, i * 100);
+            }
+        }
+    </script>
+</body>
+</html>
